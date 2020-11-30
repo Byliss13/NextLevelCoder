@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b31cbe0f-93eb-44a4-987d-0e31e7a636a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/player.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ball.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/player.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +47,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/gitignore" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="NextLevelCoder" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -192,26 +193,42 @@
       <screen x="0" y="0" width="1280" height="728" />
     </state>
     <state x="420" y="124" key="FileChooserDialogImpl/0.0.1280.728@0.0.1280.728" timestamp="1606432152290" />
-    <state width="1258" height="174" key="GridCell.Tab.0.bottom" timestamp="1606521336702">
+    <state width="1258" height="168" key="GridCell.Tab.0.bottom" timestamp="1606778980476">
       <screen x="0" y="0" width="1280" height="728" />
     </state>
-    <state width="1258" height="174" key="GridCell.Tab.0.bottom/0.0.1280.728@0.0.1280.728" timestamp="1606521336702" />
-    <state width="1258" height="174" key="GridCell.Tab.0.center" timestamp="1606521336702">
+    <state width="1258" height="168" key="GridCell.Tab.0.bottom/0.0.1280.728@0.0.1280.728" timestamp="1606778980476" />
+    <state width="1258" height="168" key="GridCell.Tab.0.center" timestamp="1606778980476">
       <screen x="0" y="0" width="1280" height="728" />
     </state>
-    <state width="1258" height="174" key="GridCell.Tab.0.center/0.0.1280.728@0.0.1280.728" timestamp="1606521336702" />
-    <state width="1258" height="174" key="GridCell.Tab.0.left" timestamp="1606521336702">
+    <state width="1258" height="168" key="GridCell.Tab.0.center/0.0.1280.728@0.0.1280.728" timestamp="1606778980476" />
+    <state width="1258" height="168" key="GridCell.Tab.0.left" timestamp="1606778980476">
       <screen x="0" y="0" width="1280" height="728" />
     </state>
-    <state width="1258" height="174" key="GridCell.Tab.0.left/0.0.1280.728@0.0.1280.728" timestamp="1606521336702" />
-    <state width="1258" height="174" key="GridCell.Tab.0.right" timestamp="1606521336702">
+    <state width="1258" height="168" key="GridCell.Tab.0.left/0.0.1280.728@0.0.1280.728" timestamp="1606778980476" />
+    <state width="1258" height="168" key="GridCell.Tab.0.right" timestamp="1606778980476">
       <screen x="0" y="0" width="1280" height="728" />
     </state>
-    <state width="1258" height="174" key="GridCell.Tab.0.right/0.0.1280.728@0.0.1280.728" timestamp="1606521336702" />
-    <state x="141" y="0" key="SettingsEditor" timestamp="1606346498930">
+    <state width="1258" height="168" key="GridCell.Tab.0.right/0.0.1280.728@0.0.1280.728" timestamp="1606778980476" />
+    <state width="1258" height="217" key="GridCell.Tab.1.bottom" timestamp="1606523549606">
       <screen x="0" y="0" width="1280" height="728" />
     </state>
-    <state x="141" y="0" key="SettingsEditor/0.0.1280.728@0.0.1280.728" timestamp="1606346498930" />
+    <state width="1258" height="217" key="GridCell.Tab.1.bottom/0.0.1280.728@0.0.1280.728" timestamp="1606523549606" />
+    <state width="1258" height="217" key="GridCell.Tab.1.center" timestamp="1606523549605">
+      <screen x="0" y="0" width="1280" height="728" />
+    </state>
+    <state width="1258" height="217" key="GridCell.Tab.1.center/0.0.1280.728@0.0.1280.728" timestamp="1606523549605" />
+    <state width="1258" height="217" key="GridCell.Tab.1.left" timestamp="1606523549605">
+      <screen x="0" y="0" width="1280" height="728" />
+    </state>
+    <state width="1258" height="217" key="GridCell.Tab.1.left/0.0.1280.728@0.0.1280.728" timestamp="1606523549605" />
+    <state width="1258" height="217" key="GridCell.Tab.1.right" timestamp="1606523549605">
+      <screen x="0" y="0" width="1280" height="728" />
+    </state>
+    <state width="1258" height="217" key="GridCell.Tab.1.right/0.0.1280.728@0.0.1280.728" timestamp="1606523549605" />
+    <state x="141" y="0" key="SettingsEditor" timestamp="1606774775319">
+      <screen x="0" y="0" width="1280" height="728" />
+    </state>
+    <state x="141" y="0" key="SettingsEditor/0.0.1280.728@0.0.1280.728" timestamp="1606774775319" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -219,11 +236,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
           <line>2</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/components/player.py</url>
-          <line>17</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
