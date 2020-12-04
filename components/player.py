@@ -1,9 +1,11 @@
 import pygame
-
+from os import path
 from utils.constants import (
     GREEN,
+    BLACK,
     SCREEM_WHIDTH,
-    SCREEM_HEIGHT
+    SCREEM_HEIGHT,
+    IMG_DIR
  )
 
 from components.bullet import Bullet
@@ -13,8 +15,9 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pygame.Surface((50, 50))
-        self.image.fill(GREEN)
+        self.image = pygame.image.load(path.join(IMG_DIR, "alien.png"))
+        self.image = pygame.transform.scale(self.image, (50, 50))
+        self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
         self.rect.centerx = SCREEM_WHIDTH/2
         self.rect.bottom = SCREEM_HEIGHT - 10
