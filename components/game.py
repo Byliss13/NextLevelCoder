@@ -1,5 +1,6 @@
 import pygame
 from components.ball import Ball
+from components.powerup import Fruit
 from components.player import Player
 from utils.test_utils import draw_text
 from os import path
@@ -24,6 +25,11 @@ class Game:
         self.backgroup_img = pygame.transform.scale(self.backgroup_img, (SCREEM_WHIDTH,SCREEM_HEIGHT))
         self.playing = False
         self.running = True
+        self.condic = False
+        pygame.mixer.init()
+        pygame.mixer.music.load(path.join(IMG_DIR, "town4.mp3"))
+        pygame.mixer.music.play(-1)
+        self.contador = 0
 
     def run(self):
         self.create_components()
@@ -44,6 +50,10 @@ class Game:
         ball = Ball(1)
         self.all_sprites.add(ball)
         self.balls.add(ball)
+        self.fruits = pygame.sprite.Group()
+        fruit = Fruit()
+        self.fruits.add(fruit)
+        self.all_sprites.add(fruit)
 
 
     def update(self):
@@ -52,12 +62,18 @@ class Game:
         if hits:
             self.playing = False
         hits = pygame.sprite.groupcollide(self.balls, self.player.bullets, True, True)
+        if hits:
+            self.contador+= 1
         for hit in hits :
             if hit.size < 4:
                 for i in range(0, 2):
                     ball = Ball(hit.size + 1)
                     self.all_sprites.add(ball)
                     self.balls.add(ball)
+
+        hit = pygame.sprite.spritecollide(self.player, self.fruits, True)
+        if hit:
+            self.condic = True
 
 
     def events(self):
@@ -67,7 +83,11 @@ class Game:
                 self.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    self.player.shoot()
+                    self.player.shoot(self.condic)
+            elif self.contador == 15:
+                self.playing = False
+
+
 
 
 
@@ -77,11 +97,11 @@ class Game:
         self.all_sprites.draw(self.screen)
         pygame.display.flip()
 
-    def show_start_screen(self):
+    def show_start_screen (self):
         self.screen.blit(self.backgroup_img, self.backgroup_img.get_rect())
-        draw_text(self.screen, "GAME working!!!!!", 64, SCREEM_WHIDTH/2, SCREEM_HEIGHT/4)
-        draw_text(self.screen, "Presiona las teclas direcionales para moverse y SPACE para disparar", 20, SCREEM_WHIDTH/2, SCREEM_HEIGHT/2)
-        draw_text(self.screen, "Press ENTER key to begin", 20, SCREEM_WHIDTH/2, SCREEM_HEIGHT*3/5)
+        draw_text(self.screen, "BIENVENIDO A MI JUEGAZO!!!!!", 40, SCREEM_WHIDTH/2, SCREEM_HEIGHT/4)
+        draw_text(self.screen, "Presiona las teclas direcionales para moverse y SPACE para disparar", 18, SCREEM_WHIDTH/2, SCREEM_HEIGHT/2)
+        draw_text(self.screen, "Presiona ENTER para jugar!!!!!!!", 20, SCREEM_WHIDTH/2, SCREEM_HEIGHT*3/5)
         pygame.display.flip()
         waiting = True
         while waiting:
@@ -93,6 +113,7 @@ class Game:
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_RETURN:
                         waiting = False
+
 
 
 
