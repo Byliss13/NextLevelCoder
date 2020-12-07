@@ -30,7 +30,8 @@ class Game:
         pygame.mixer.music.load(path.join(IMG_DIR, "town4.mp3"))
         pygame.mixer.music.play(-1)
         self.contador = 0
-
+        self.player_character = None
+        self.cant_bullet = 0
     def run(self):
         self.create_components()
         self.playing = True
@@ -44,7 +45,7 @@ class Game:
 
     def create_components(self):
         self.all_sprites = pygame.sprite.Group()
-        self.player = Player(self)
+        self.player = Player(self, self.player_character)
         self.all_sprites.add(self.player)
         self.balls = pygame.sprite.Group()
         ball = Ball(1)
@@ -63,7 +64,7 @@ class Game:
             self.playing = False
         hits = pygame.sprite.groupcollide(self.balls, self.player.bullets, True, True)
         if hits:
-            self.contador+= 1
+            self.contador += 1
         for hit in hits :
             if hit.size < 4:
                 for i in range(0, 2):
@@ -76,16 +77,36 @@ class Game:
             self.condic = True
 
 
+        elif self.playing == False:
+            self.condic = False
+            self.contador = 0
+            self.cant_bullet = 0
+
+
+
+
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                self.playing =False
+                self.playing = False
                 self.running = False
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     self.player.shoot(self.condic)
+                    self.cant_bullet += 1
+
             elif self.contador == 15:
                 self.playing = False
+
+
+
+
+            elif  self.cant_bullet > 5:
+                self.condic = False
+                self.cant_bullet = 0
+
+
+
 
 
 
@@ -113,6 +134,53 @@ class Game:
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_RETURN:
                         waiting = False
+
+    def show_start_screen_part2(self):
+        self.screen.blit(self.backgroup_img, self.backgroup_img.get_rect())
+        draw_text(self.screen, "Elige personaje!!!!!", 64, SCREEM_WHIDTH / 2, SCREEM_HEIGHT / 4)
+        draw_text(self.screen, "Presiona las teclas... ", 20, SCREEM_WHIDTH / 2, SCREEM_HEIGHT / 2)
+        draw_text(self.screen, "1 para el alien ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 20))
+        draw_text(self.screen, "2 para la nave espacial", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 40))
+        draw_text(self.screen, "3 para el elefante ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 60))
+        draw_text(self.screen, "4 para el conejo ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 80))
+        draw_text(self.screen, "5 para el gato ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 100))
+        draw_text(self.screen, "6 para la estrella ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 120))
+        draw_text(self.screen, "7 para el ratón ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 140))
+        draw_text(self.screen, "8 para el sol ", 20, SCREEM_WHIDTH / 2, (SCREEM_HEIGHT / 2 + 160))
+        pygame.display.flip()
+        waiting = True
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit(0)
+                if event.type == pygame.KEYUP:
+                    if event.key == pygame.K_1:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "alien.png"))
+                        waiting = False
+                    if event.key == pygame.K_2:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "nave-espacial.jpg"))
+                        waiting = False
+                    if event.key == pygame.K_3:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "elefante.png"))
+                        waiting = False
+                    if event.key == pygame.K_4:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "conejito.jpg"))
+                        waiting = False
+                    if event.key == pygame.K_5:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "gatitoo.png"))
+                        waiting = False
+                    if event.key == pygame.K_6:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "estrellita.jpg"))
+                        waiting = False
+                    if event.key == pygame.K_7:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "raton.jpg"))
+                        waiting = False
+                    if event.key == pygame.K_8:
+                        self.player_character = pygame.image.load(path.join(IMG_DIR, "sol.jpg"))
+                        waiting = False
+
 
 
 

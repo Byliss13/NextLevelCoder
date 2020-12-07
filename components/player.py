@@ -12,10 +12,10 @@ from components.bullet import Bullet
 
 class Player(pygame.sprite.Sprite):
 
-    def __init__(self, game):
+    def __init__(self, game, image):
         pygame.sprite.Sprite.__init__(self)
         self.game = game
-        self.image = pygame.image.load(path.join(IMG_DIR, "alien.png"))
+        self.image = image
         self.image = pygame.transform.scale(self.image, (50, 50))
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()

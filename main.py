@@ -5,6 +5,8 @@ if __name__ == "__main__":
     while game.running:
         if not game.playing:
             game.show_start_screen()
-            game.run()
+            if not game.playing:
+                game.show_start_screen_part2()
+                game.run()
 
     pygame.quit()
